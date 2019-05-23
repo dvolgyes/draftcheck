@@ -1,6 +1,6 @@
 """This modules contains code to find rule violations in text."""
 
-import rules
+from . import rules
 import itertools
 import re
 
@@ -10,10 +10,10 @@ LATEX_ENVS = {
     'paragraph': ['abstract', 'document', 'titlepage']
 }
 
-LATEX_ENVS = dict((k, env) for env in LATEX_ENVS for k in LATEX_ENVS[env])
+LATEX_ENVS = {k: env for env in LATEX_ENVS for k in LATEX_ENVS[env]}
 
 
-class Validator(object):
+class Validator:
     # Regular expressions to extract environments
     env_begin_regex = re.compile(r'\\begin{(\w+)}')
     env_end_regex = re.compile(r'\\end{(\w+)}')

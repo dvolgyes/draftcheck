@@ -1,5 +1,5 @@
-from rules import get_brief
-from validator import Validator
+from .rules import get_brief
+from .validator import Validator
 
 
 def pad_string(text, span, size):
@@ -21,18 +21,18 @@ def pad_string(text, span, size):
 
 
 def print_warning(fname, lineno, line, span, rule, args):
-    prefix = '{0}:{1}:{2}:'.format(fname, lineno, span[0])
-    print prefix,
+    prefix = f'{fname}:{lineno}:{span[0]}:'
+    print(prefix, end=' ')
 
     padded_str, start_index = pad_string(line, span, 10)
     if rule.show_spaces:
-        print padded_str.replace(' ', '_')
+        print(padded_str.replace(' ', '_'))
     else:
-        print padded_str
+        print(padded_str)
 
-    print ' ' * (len(prefix) + start_index + 1) + '^' * (span[1] - span[0])
-    print "\t[{0:03d}]".format(rule.id), get_brief(rule)
-    print
+    print(' ' * (len(prefix) + start_index + 1) + '^' * (span[1] - span[0]))
+    print(f"\t[{rule.id:03d}]", get_brief(rule))
+    print()
 
 
 def main():
@@ -58,8 +58,8 @@ def main():
                     num_errors += 1
 
     if num_errors > 0:
-        print '\nTotal of {0} mistakes found.'.format(num_errors)
+        print(f'\nTotal of {num_errors} mistakes found.')
         return 1
     else:
-        print 'No mistakes found.'
+        print('No mistakes found.')
         return 0

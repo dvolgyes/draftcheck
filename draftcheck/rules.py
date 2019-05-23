@@ -176,7 +176,7 @@ def check_unescaped_percentage(text, matches):
 @rule(r'\s[,;.!?]', show_spaces=True)
 def check_space_before_punctuation(text, matches):
     """Do not precede punctuation characters with spaces.
-    
+
     Example
     -------
     Bad:
@@ -208,7 +208,7 @@ def check_no_space_next_to_parentheses(text, matches):
 @rule(r'\d+\s?x\d+')
 def check_incorrect_usage_of_x_as_times(text, matches):
     """In the context of 'times' or 'multiply', use $\\times$ instead of 'x'.
-    
+
     Example
     -------
     Bad:
@@ -220,10 +220,10 @@ def check_incorrect_usage_of_x_as_times(text, matches):
     return [m.span() for m in matches]
 
 
-@rule('[a-z]+\s-\s[a-z]+')
+@rule(r'[a-z]+\s-\s[a-z]+')
 def check_space_surrounded_dash(text, matches):
     """Use an em-dash '---' to denote parenthetical breaks or statements.
-    
+
     Example
     -------
     Bad:
@@ -321,7 +321,7 @@ def check_begin_center(text, matches):
 
 @rule(r'^\$\$', in_env='math')
 def check_double_dollar_math(text, matches):
-    """Use \[ or \\begin{equation} instead of $$.
+    """Use \\[ or \\begin{equation} instead of $$.
 
     Example
     -------
@@ -361,11 +361,11 @@ def check_footnote_before_punctuation(text, matches):
     Example
     -------
     Bad:
-        \emph{Waiting for Godot}\\footnote{First performed on 5 January 1953 in
+        \\emph{Waiting for Godot}\\footnote{First performed on 5 January 1953 in
         Paris}, written by Samuel Beckett, is an example of Absurdist Theatre.
 
     Good:
-        \emph{Waiting for Godot},\\footnote{First performed on 5 January 1953 in
+        \\emph{Waiting for Godot},\\footnote{First performed on 5 January 1953 in
         Paris} written by Samuel Beckett, is an example of Absurdist Theatre.
     """
     return [m.span() for m in matches]
@@ -465,7 +465,7 @@ def check_sloppy_command(text, matches):
 
 @rule(r"'''|```")
 def check_triple_quote(text, matches):
-    """Use a thin space \, to separate quotes."""
+    r"""Use a thin space \, to separate quotes."""
     return [m.span() for m in matches]
 
 
@@ -532,7 +532,7 @@ def check_obsolete_commands():
     }
 
     for incorrect, correct in changes.items():
-        yield '\\' + incorrect + '{', correct
+        yield r'\\' + incorrect + '{', correct
 
 
 @rule_generator()
@@ -542,10 +542,10 @@ def check_obsolete_packages():
     changes = {
         'a4': 'a4paper',
         'a4wide': 'a4paper',
-        't1enc': '\usepackage[T1]{fontenc}',
-        'umlaute': '\usepackage[latin1]{inputenc}',
-        'isolatin': '\usepackage[isolatin]{inputenc}',
-        'isolatin1': '\usepackage[latin1]{inputenc}',
+        't1enc': r'\usepackage[T1]{fontenc}',
+        'umlaute': r'\usepackage[latin1]{inputenc}',
+        'isolatin': r'\usepackage[isolatin]{inputenc}',
+        'isolatin1': r'\usepackage[latin1]{inputenc}',
         'fancyheadings': 'fancyhdr',
         'mathptm': 'mathptmx',
         'mathpple': 'mathpazo',
@@ -556,7 +556,7 @@ def check_obsolete_packages():
     }
 
     for incorrect, correct in changes.items():
-        yield '\\' + incorrect + '{', correct
+        yield r'\\' + incorrect + '{', correct
 
 
 @rule_generator()
@@ -569,7 +569,7 @@ def check_obsolete_environments():
     }
 
     for incorrect, correct in changes.items():
-        yield '\\begin{' + incorrect + '}', correct
+        yield r'\begin{' + incorrect + '}', correct
 
 
 def get_brief(r):

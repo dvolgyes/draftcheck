@@ -7,14 +7,14 @@ def found_error(rule, text):
     """Return whether a particular rule has been violated."""
     for r, _ in Validator().validate(text):
         if r.id == rule.id:
-            print r.__doc__
+            print(r.__doc__)
             return True
     return False
 
 
 def normalise_text(text):
     """Replace newlines and surrounding whitespace with a single space."""
-    return ' '.join(map(lambda x: x.lstrip(), text.split('\n')))
+    return ' '.join([x.lstrip() for x in text.split('\n')])
 
 
 def test_examples():
