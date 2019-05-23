@@ -52,3 +52,23 @@ examples/simple.tex:123:29: ...the number '9'. This is b...
 
 Total of 5 mistakes found.
 ```
+
+Pre-commit hooks
+----------------
+
+[Pre-commit](https://pre-commit.com/) hooks is a framework for managing and maintaining multi-language pre-commit hooks.
+
+You can check your LaTeX files automatically before committing them to git.
+Three steps are required:
+- install pre-commit package from pip, e.g. ```pip install pre-commit --user```
+- go to your latex directory, and install the hooks:
+  ```pre-commit install```
+- add the following lines to your `.pre-commit-config.yaml` file:
+```
+repos:
+-   repo: https://github.com/dvolgyes/draftcheck
+    rev: master
+    hooks:
+    - id: draftcheck
+```
+
