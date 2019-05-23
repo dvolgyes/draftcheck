@@ -23,4 +23,3 @@ install:
 
 script:
   - nosetests
-  - python3 bin/draftcheck examples/simple.tex

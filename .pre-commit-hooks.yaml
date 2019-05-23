@@ -1,0 +1,10 @@
+-   id: draftcheck
+    name: "A LaTeX Linter"
+    description: "LaTeX linter that is specifically designed for academic writing."
+    entry: draftcheck
+    language: python
+    types: [text]
+    # args: []
+    # for backward compatibility
+    files: '.*tex'
+    minimum_pre_commit_version: 0.15.0
