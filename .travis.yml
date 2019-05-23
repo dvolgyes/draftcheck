@@ -1,0 +1,26 @@
+# Travis CI configuration file
+
+language: python
+
+python:
+  - "3.6"
+  - "3.7"
+
+notifications:
+  email: false
+
+dist: xenial
+
+sudo: false
+
+cache:
+  timeout: 1500
+  pip: true
+
+install:
+    - pip3 install --upgrade pip setuptools wheel nose
+    - pip3 install .
+
+script:
+  - nosetests
+  - python3 bin/draftcheck examples/simple.tex
