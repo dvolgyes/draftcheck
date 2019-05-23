@@ -1,7 +1,7 @@
 draftcheck
 ==========
 
-Travis:[![Build Status](https://travis-ci.org/dvolgyes/draftcheck.svg?branch=master)](https://travis-ci.org/dvolgyes/draftcheck)
+Travis:[![Build Status](https://travis-ci.org/ebnn/draftcheck.svg?branch=master)](https://travis-ci.org/ebnn/draftcheck)
 
 `draftcheck` is an LaTeX linter that is specifically designed for academic writing.
 
@@ -66,7 +66,7 @@ Three steps are required:
 - add the following lines to your `.pre-commit-config.yaml` file:
 ```
 repos:
--   repo: https://github.com/dvolgyes/draftcheck
+-   repo: https://github.com/ebnn/draftcheck
     rev: master
     hooks:
     - id: draftcheck
