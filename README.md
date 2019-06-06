@@ -1,7 +1,7 @@
 draftcheck
 ==========
 
-Travis:[![Build Status](https://travis-ci.org/ebnn/draftcheck.svg?branch=master)](https://travis-ci.org/ebnn/draftcheck)
+Travis:[![Build Status](https://travis-ci.org/dvolgyes/draftcheck.svg?branch=master)](https://travis-ci.org/dvolgyes/draftcheck)
 
 `draftcheck` is an LaTeX linter that is specifically designed for academic writing.
 
